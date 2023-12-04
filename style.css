@@ -1,0 +1,41 @@
+.box {
+  background: #08c;
+  color: white;
+  border: 1px solid #ddd;
+  border-radius: 11px;
+  padding: 40px;
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+}
+.box:hover {
+  background: black;
+}
+.box i {
+  font-size: 6em;
+}
+.box button {
+  transition: 0.3s ease-in-out;
+  background: none;
+  border: 1px solid;
+  border-radius: 11px;
+  padding: 6px 10px;
+  color: white;
+  cursor: pointer;
+}
+.box button:hover {
+  padding: 6px 36px;
+  background: white;
+  color: black;
+  transition: 0.3s ease-in-out;
+}
+ 
+.image {
+  max-width: 90px ;
+  display: block;
+  margin-right: 20px;
+  }
